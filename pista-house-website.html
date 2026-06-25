@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pista House — India's Finest Biryani &amp; World-Famous Haleem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:wght@500;600;700&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF6EA;
+    --cream-soft:#F1E9D6;
+    --ink:#162318;
+    --ink-soft:#3C4A3F;
+    --emerald:#1E5C3C;
+    --emerald-deep:#0A2E1C;
+    --emerald-mid:#2C7350;
+    --gold:#C79A3D;
+    --gold-light:#E9CC85;
+    --ivory:#F8F2E2;
+    --maxw:1180px;
+    --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--ink);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    font-weight:700;color:var(--emerald);display:inline-flex;align-items:center;gap:8px;
+  }
+  .eyebrow::before{content:'';width:18px;height:2px;background:var(--gold);display:inline-block;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 26px;border-radius:999px;font-weight:600;font-size:.95rem;
+    border:1.5px solid transparent;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    font-family:'Work Sans',sans-serif;
+  }
+  .btn:focus-visible{outline:3px solid var(--gold-light);outline-offset:2px;}
+  .btn-gold{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--emerald-deep);}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(199,154,61,.35);}
+  .btn-outline{border-color:rgba(248,242,226,.55);color:var(--ivory);background:transparent;}
+  .btn-outline:hover{background:rgba(248,242,226,.12);transform:translateY(-2px);}
+  .btn-emerald{background:var(--emerald);color:var(--ivory);}
+  .btn-emerald:hover{background:var(--emerald-mid);transform:translateY(-2px);}
+  .btn-ghost{background:rgba(30,92,60,.08);color:var(--emerald);}
+  .btn-ghost:hover{background:rgba(30,92,60,.16);}
+  .icon{width:18px;height:18px;flex-shrink:0;}
+
+  /* ---------- Marquee offers bar ---------- */
+  .marquee-bar{
+    background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));
+    color:var(--emerald-deep);overflow:hidden;white-space:nowrap;
+    font-weight:700;font-size:.82rem;letter-spacing:.02em;
+    border-bottom:1px solid rgba(10,46,28,.15);
+  }
+  .marquee-track{display:inline-flex;animation:scrollLeft 28s linear infinite;padding:9px 0;}
+  .marquee-track span{padding:0 28px;display:inline-flex;align-items:center;gap:8px;}
+  @keyframes scrollLeft{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;background:rgba(251,246,234,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid rgba(30,92,60,.12);
+  }
+  .nav-row{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
+  .brandmark{display:flex;align-items:center;gap:10px;}
+  .pill-logo{
+    background:linear-gradient(160deg,var(--emerald),var(--emerald-deep));
+    border:1.5px solid var(--gold);border-radius:999px;
+    padding:6px 18px;display:inline-flex;align-items:baseline;gap:4px;
+  }
+  .pill-logo span.script{font-family:'Italianno',cursive;font-size:1.7rem;color:var(--ivory);line-height:1;}
+  .pill-logo sup{font-size:.55rem;color:var(--gold-light);}
+  nav.links{display:flex;gap:28px;font-weight:600;font-size:.92rem;}
+  nav.links a{position:relative;color:var(--ink-soft);}
+  nav.links a:hover{color:var(--emerald);}
+  .nav-cta{display:flex;align-items:center;gap:14px;}
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .burger .icon{width:26px;height:26px;color:var(--emerald);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:radial-gradient(ellipse at 50% -10%, var(--emerald-mid) 0%, var(--emerald) 38%, var(--emerald-deep) 100%);
+    color:var(--ivory);padding:96px 24px 120px;text-align:center;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:repeating-linear-gradient(135deg, rgba(199,154,61,.05) 0 2px, transparent 2px 22px);
+    pointer-events:none;
+  }
+  .steam{position:absolute;bottom:0;left:50%;width:340px;height:340px;transform:translateX(-50%);pointer-events:none;}
+  .wisp{
+    position:absolute;bottom:40px;border-radius:50%;
+    background:radial-gradient(circle, rgba(233,204,133,.38), transparent 70%);
+    filter:blur(6px);opacity:0;
+    animation:rise 7s ease-in infinite;
+  }
+  .wisp.w1{left:30px;width:90px;height:140px;animation-delay:0s;}
+  .wisp.w2{left:150px;width:70px;height:110px;animation-delay:1.8s;}
+  .wisp.w3{left:230px;width:100px;height:150px;animation-delay:3.4s;}
+  .wisp.w4{left:90px;width:60px;height:90px;animation-delay:5s;}
+  @keyframes rise{
+    0%{opacity:0;transform:translateY(0) scale(.8);}
+    25%{opacity:.55;}
+    80%{opacity:.15;}
+    100%{opacity:0;transform:translateY(-260px) scale(1.3);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .wisp{animation:none;display:none;}
+    .marquee-track{animation:none;}
+  }
+  .hero-inner{position:relative;z-index:2;max-width:760px;margin:0 auto;}
+  .hero-badge{
+    display:inline-block;border:1.5px solid var(--gold);border-radius:999px;
+    padding:10px 30px;margin-bottom:28px;background:rgba(10,46,28,.35);
+  }
+  .hero-badge .script{font-family:'Italianno',cursive;font-size:3rem;color:var(--ivory);line-height:1;}
+  .hero-badge sup{font-size:.9rem;color:var(--gold-light);vertical-align:super;}
+  .hero h1{
+    font-size:clamp(2.1rem,5vw,3.1rem);font-weight:600;color:var(--ivory);
+    margin-bottom:18px;font-family:'Cormorant Garamond',serif;
+  }
+  .hero h1 em{font-style:normal;color:var(--gold-light);}
+  .hero p.lead{
+    font-size:1.08rem;color:rgba(248,242,226,.85);max-width:560px;margin:0 auto 36px;
+  }
+  .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .hero-meta{
+    margin-top:54px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap;
+  }
+  .hero-meta div{text-align:center;}
+  .hero-meta strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold-light);}
+  .hero-meta span{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(248,242,226,.7);}
+
+  /* ---------- Heritage strip ---------- */
+  .heritage{background:var(--ink);color:var(--ivory);}
+  .heritage .wrap{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:28px;padding:34px 24px;
+  }
+  .heritage-item{display:flex;align-items:center;gap:12px;}
+  .heritage-item .icon{color:var(--gold-light);width:26px;height:26px;}
+  .heritage-item p{font-size:.85rem;color:rgba(248,242,226,.85);}
+  .heritage-item strong{display:block;font-size:.95rem;color:var(--ivory);}
+
+  /* ---------- Section generic ---------- */
+  section{padding:88px 24px;}
+  .section-head{max-width:640px;margin:0 0 48px;}
+  .section-head.center{margin:0 auto 48px;text-align:center;}
+  .section-head h2{font-size:clamp(1.8rem,3.4vw,2.5rem);margin-top:10px;}
+  .section-head p{color:var(--ink-soft);margin-top:12px;font-size:1.02rem;}
+
+  /* ---------- Signature dishes ---------- */
+  .dish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .dish-card{
+    background:var(--cream-soft);border-radius:var(--radius);padding:28px 24px;
+    border:1px solid rgba(30,92,60,.1);transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .dish-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(20,40,28,.1);}
+  .dish-card .tag{
+    display:inline-block;background:var(--emerald);color:var(--ivory);font-size:.7rem;
+    font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:14px;
+  }
+  .dish-card h3{font-size:1.4rem;margin-bottom:8px;}
+  .dish-card p{color:var(--ink-soft);font-size:.94rem;}
+
+  /* ---------- Story ---------- */
+  .story{background:var(--emerald-deep);color:var(--ivory);}
+  .story-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;}
+  .story h2{color:var(--ivory);}
+  .story .section-head .eyebrow{color:var(--gold-light);}
+  .story .eyebrow::before{background:var(--gold-light);}
+  .story p{color:rgba(248,242,226,.82);margin-bottom:16px;font-size:1.02rem;}
+  .story-stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .story-stat{
+    border:1px solid rgba(199,154,61,.4);border-radius:14px;padding:20px;text-align:center;
+    background:rgba(199,154,61,.06);
+  }
+  .story-stat strong{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold-light);}
+  .story-stat span{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:rgba(248,242,226,.75);}
+
+  /* ---------- Locations ---------- */
+  .locations-bg{background:var(--cream-soft);}
+  .branch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .branch-card{
+    background:var(--cream);border-radius:var(--radius);padding:24px;
+    border:1px solid rgba(30,92,60,.12);display:flex;flex-direction:column;gap:14px;
+  }
+  .branch-card.active{border-color:var(--gold);box-shadow:0 0 0 3px rgba(199,154,61,.18);}
+  .branch-card .badge-orig{
+    align-self:flex-start;background:var(--gold);color:var(--emerald-deep);
+    font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px;
+  }
+  .branch-card h3{font-size:1.2rem;}
+  .branch-card .addr{font-size:.86rem;color:var(--ink-soft);display:flex;gap:8px;align-items:flex-start;}
+  .branch-card .addr .icon{color:var(--emerald);flex-shrink:0;margin-top:2px;}
+  .branch-card .hours{font-size:.8rem;color:var(--emerald);font-weight:600;}
+  .branch-actions{display:flex;gap:10px;margin-top:auto;flex-wrap:wrap;}
+  .branch-actions .btn{padding:10px 16px;font-size:.82rem;}
+
+  /* ---------- Menu ---------- */
+  .menu-top{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    margin-bottom:30px;
+  }
+  .ordering-pill{
+    display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--ivory);
+    padding:10px 18px;border-radius:999px;font-size:.85rem;font-weight:600;
+  }
+  .ordering-pill .icon{color:var(--gold-light);width:16px;height:16px;}
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;}
+  .tab-btn{
+    padding:10px 20px;border-radius:999px;border:1.5px solid rgba(30,92,60,.25);
+    background:transparent;font-weight:600;font-size:.86rem;cursor:pointer;color:var(--ink-soft);
+    transition:all .15s ease;font-family:'Work Sans',sans-serif;
+  }
+  .tab-btn.active{background:var(--emerald);color:var(--ivory);border-color:var(--emerald);}
+  .menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .menu-item{
+    display:flex;justify-content:space-between;gap:16px;align-items:center;
+    background:var(--cream-soft);border-radius:14px;padding:18px 20px;border:1px solid rgba(30,92,60,.08);
+  }
+  .menu-item .info h4{font-family:'Work Sans',sans-serif;font-weight:700;font-size:1rem;color:var(--ink);}
+  .menu-item .info p{font-size:.82rem;color:var(--ink-soft);margin-top:4px;}
+  .menu-item .price-row{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+  .menu-item .price{font-weight:700;color:var(--emerald);white-space:nowrap;}
+  .add-btn{
+    width:34px;height:34px;border-radius:999px;border:1.5px solid var(--emerald);background:transparent;
+    color:var(--emerald);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:all .15s ease;
+  }
+  .add-btn:hover{background:var(--emerald);color:var(--ivory);}
+  .price-note{font-size:.78rem;color:var(--ink-soft);margin-top:18px;font-style:italic;}
+
+  /* ---------- Floating cart ---------- */
+  .cart-fab{
+    position:fixed;bottom:24px;right:24px;z-index:60;background:var(--emerald);color:var(--ivory);
+    border:none;border-radius:999px;padding:16px 22px;display:flex;align-items:center;gap:10px;
+    box-shadow:0 12px 30px rgba(10,46,28,.35);cursor:pointer;font-weight:700;font-size:.9rem;
+    font-family:'Work Sans',sans-serif;
+  }
+  .cart-fab .count{
+    background:var(--gold);color:var(--emerald-deep);border-radius:999px;
+    min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;
+    font-size:.75rem;padding:0 6px;
+  }
+  .cart-drawer{
+    position:fixed;inset:0;background:rgba(10,20,14,.45);z-index:70;display:none;
+  }
+  .cart-drawer.open{display:block;}
+  .cart-panel{
+    position:absolute;right:0;top:0;bottom:0;width:min(420px,92vw);background:var(--cream);
+    padding:28px 24px;overflow-y:auto;box-shadow:-12px 0 30px rgba(0,0,0,.2);
+  }
+  .cart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+  .cart-close{background:none;border:none;cursor:pointer;color:var(--ink-soft);}
+  .cart-close .icon{width:22px;height:22px;}
+  .cart-line{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:12px 0;border-bottom:1px solid rgba(30,92,60,.1);
+  }
+  .cart-line .qty-controls{display:flex;align-items:center;gap:8px;}
+  .cart-line .qty-controls button{
+    width:24px;height:24px;border-radius:50%;border:1px solid var(--emerald);background:none;color:var(--emerald);cursor:pointer;
+  }
+  .cart-empty{color:var(--ink-soft);font-size:.9rem;text-align:center;padding:40px 0;}
+  .cart-total{display:flex;justify-content:space-between;font-weight:700;margin:18px 0;font-size:1.05rem;}
+  .wa-send{width:100%;justify-content:center;}
+
+  /* ---------- Videos ---------- */
+  .video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+  .video-card{background:var(--cream-soft);border-radius:var(--radius);padding:18px;border:1px solid rgba(30,92,60,.1);}
+  .video-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000;margin-bottom:14px;}
+  .video-frame iframe{width:100%;height:100%;border:0;}
+  .video-card h3{font-size:1.15rem;margin-bottom:6px;}
+  .video-card p{font-size:.86rem;color:var(--ink-soft);}
+
+  /* ---------- Testimonials ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .testi-card{background:var(--ink);color:var(--ivory);border-radius:var(--radius);padding:26px;}
+  .testi-card p.quote{font-size:1rem;color:rgba(248,242,226,.9);margin-bottom:16px;font-style:italic;}
+  .testi-card .stars{color:var(--gold-light);font-size:.85rem;margin-bottom:10px;}
+  .testi-card .who{font-size:.82rem;color:rgba(248,242,226,.6);font-weight:600;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--emerald-deep);color:rgba(248,242,226,.8);padding:64px 24px 28px;}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+  .foot-col h4{color:var(--ivory);font-family:'Work Sans',sans-serif;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px;}
+  .foot-col a, .foot-col p{display:block;font-size:.88rem;color:rgba(248,242,226,.72);margin-bottom:10px;}
+  .foot-col a:hover{color:var(--gold-light);}
+  .foot-bottom{
+    border-top:1px solid rgba(248,242,226,.12);padding-top:24px;display:flex;justify-content:space-between;
+    flex-wrap:wrap;gap:12px;font-size:.78rem;color:rgba(248,242,226,.55);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .dish-grid{grid-template-columns:repeat(2,1fr);}
+    .branch-grid{grid-template-columns:repeat(2,1fr);}
+    .story-grid{grid-template-columns:1fr;}
+    .video-grid{grid-template-columns:1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    .heritage .wrap{grid-template-columns:repeat(2,1fr);}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:720px){
+    nav.links{display:none;}
+    .burger{display:block;}
+    .nav-cta .btn-emerald span.label{display:none;}
+    .dish-grid{grid-template-columns:1fr;}
+    .branch-grid{grid-template-columns:1fr;}
+    .menu-grid{grid-template-columns:1fr;}
+    .heritage .wrap{grid-template-columns:1fr 1fr;}
+    .foot-grid{grid-template-columns:1fr;}
+    .hero-meta{gap:28px;}
+    section{padding:64px 18px;}
+  }
+  nav.links.mobile-open{
+    display:flex;position:absolute;top:100%;left:0;right:0;background:var(--cream);
+    flex-direction:column;padding:18px 24px;gap:18px;border-bottom:1px solid rgba(30,92,60,.12);
+  }
+</style>
+</head>
+<body>
+
+<!-- Offers marquee -->
+<div class="marquee-bar">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="nav-row wrap" style="position:relative;">
+    <a href="#top" class="brandmark">
+      <span class="pill-logo"><span class="script">Pista House</span><sup>®</sup></span>
+    </a>
+    <nav class="links" id="navLinks">
+      <a href="#story">Our Story</a>
+      <a href="#signature">Signature Dishes</a>
+      <a href="#locations">Locations</a>
+      <a href="#menu">Menu</a>
+      <a href="#videos">Watch</a>
+      <a href="#visit">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-emerald" href="#menu"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 1 1-4.43-7.46L21 3l-1.04 4.43A8.46 8.46 0 0 1 21 11.5Z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg><span class="label">Order on WhatsApp</span></a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="steam">
+    <div class="wisp w1"></div><div class="wisp w2"></div><div class="wisp w3"></div><div class="wisp w4"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="script">Pista House</span><sup>®</sup></div>
+    <h1>Welcome to Pista House —<br><em>India's Finest Biryani</em> &amp; the World's Most Loved Haleem</h1>
+    <p class="lead">A Hyderabadi legacy since 1997. Slow-cooked the traditional way, served fresh across our outlets every single day — and now, just a WhatsApp message away.</p>
+    <div class="hero-ctas">
+      <a href="#locations" class="btn btn-gold">Find Your Nearest Outlet</a>
+      <a href="#menu" class="btn btn-outline">Order on WhatsApp</a>
+    </div>
+    <div class="hero-meta">
+      <div><strong>1997</strong><span>Est. in Hyderabad</span></div>
+      <div><strong>25+ yrs</strong><span>Of Legacy</span></div>
+      <div><strong>10+</strong><span>City Outlets</span></div>
+      <div><strong>5 Countries</strong><span>Loved Worldwide</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Heritage strip -->
+<div class="heritage">
+  <div class="wrap">
+    <div class="heritage-item">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c-4 0-7-3-7-7 0-5 4-9 7-13 3 4 7 8 7 13 0 4-3 7-7 7Z"/></svg>
+      <p><strong>Since 1997</strong>A single family kitchen in the Old City</p>
+    </div>
+    <div class="heritage-item">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <p><strong>Slow-Cooked Dum</strong>Sealed-pot biryani, the traditional way</p>
+    </div>
+    <div class="heritage-item">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <p><strong>100% Halal</strong>Certified across our entire menu</p>
+    </div>
+    <div class="heritage-item">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l18-7-7 18-2-8-9-3Z"/></svg>
+      <p><strong>Worldwide Reach</strong>Loved across India, USA, UAE, Oman &amp; Kuwait</p>
+    </div>
+  </div>
+</div>
+
+<!-- Signature dishes -->
+<section id="signature">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">What We're Known For</span>
+      <h2>Five Dishes, One Legacy</h2>
+      <p>Every Pista House kitchen is built around a handful of dishes we've spent decades perfecting. These are the ones people drive across the city for.</p>
+    </div>
+    <div class="dish-grid">
+      <div class="dish-card">
+        <span class="tag">Ramzan Icon</span>
+        <h3>Hyderabadi Haleem</h3>
+        <p>Slow-pounded mutton, broken wheat and lentils, simmered for hours until it turns into a rich, ghee-laced paste — finished with fried onions, mint and a squeeze of lime.</p>
+      </div>
+      <div class="dish-card">
+        <span class="tag">House Special</span>
+        <h3>Zafrani Mutton Biryani</h3>
+        <p>Tender mutton dum-cooked beneath saffron-tinted basmati, sealed and slow-steamed so every grain carries the meat's flavour through.</p>
+      </div>
+      <div class="dish-card">
+        <span class="tag">Quick Bite</span>
+        <h3>Chicken Shawarma</h3>
+        <p>Char-grilled chicken shaved thin, rolled in soft Arabic bread with garlic sauce and pickled salad — a favourite for a fast, flavour-packed meal.</p>
+      </div>
+      <div class="dish-card">
+        <span class="tag">Off the Grill</span>
+        <h3>Kebabs &amp; Starters</h3>
+        <p>Murgh malai, mutton seekh, chicken 65 — char-kissed starters straight off the grill, built for sharing on a Hyderabadi evening.</p>
+      </div>
+      <div class="dish-card">
+        <span class="tag">Bakery</span>
+        <h3>Sweets &amp; Bakery</h3>
+        <p>Osmania biscuits, double ka meetha, kunafa and kulfi — the city's favourite way to end a meal, baked fresh every morning.</p>
+      </div>
+      <div class="dish-card" style="background:var(--emerald);border:none;">
+        <span class="tag" style="background:var(--gold);color:var(--emerald-deep);">First Order</span>
+        <h3 style="color:var(--ivory);">Flat 10% Off</h3>
+        <p style="color:rgba(248,242,226,.85);">New here? Mention this on WhatsApp with your first order and our outlet team will apply your welcome discount.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div>
+      <div class="section-head">
+        <span class="eyebrow">Our Story</span>
+        <h2>From One Kitchen in the Old City, to a Name the World Knows</h2>
+      </div>
+      <p>It began in 1997 as a modest family kitchen in Shalibanda, in the heart of Hyderabad's Old City, started by Mohammed Abdul Majeed with one simple goal — to share the true flavours of Hyderabadi cooking with his city.</p>
+      <p>Nearly three decades on, that single kitchen has grown into one of the most recognised food names in India — celebrated for a Haleem so consistent and so loved that it travels across continents every Ramzan, and for a Biryani that's still cooked the traditional dum way, sealed and steamed, exactly as it always has been.</p>
+      <p>Every dish leaving a Pista House kitchen today still follows that founding promise: quality first, tradition always.</p>
+      <a href="#locations" class="btn btn-gold" style="margin-top:8px;">Visit an Outlet Near You</a>
+    </div>
+    <div class="story-stats">
+      <div class="story-stat"><strong>1997</strong><span>Founded in Shalibanda</span></div>
+      <div class="story-stat"><strong>20+ Tons</strong><span>Haleem Served Daily in Season</span></div>
+      <div class="story-stat"><strong>Multiple</strong><span>Industry Food Awards</span></div>
+      <div class="story-stat"><strong>India · USA</strong><span>UAE · Oman · Kuwait</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Locations -->
+<section class="locations-bg" id="locations">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Find Your Pista House</span>
+      <h2>Branches Across Hyderabad &amp; Secunderabad</h2>
+      <p>Tap "Get Directions" to open the outlet in Google Maps, or "Order From Here" to jump to the menu and order that branch on WhatsApp.</p>
+    </div>
+    <div class="branch-grid" id="branchGrid"></div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu">
+  <div class="wrap">
+    <div class="menu-top">
+      <div class="section-head" style="margin:0;">
+        <span class="eyebrow">Menu &amp; Ordering</span>
+        <h2>Build Your Order</h2>
+      </div>
+      <div class="ordering-pill">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Ordering for: <strong id="orderingForName">Pista House – Nagaram</strong>
+      </div>
+    </div>
+    <div class="tabs" id="tabBar"></div>
+    <div class="menu-grid" id="menuGrid"></div>
+    <p class="price-note">Prices shown are indicative and may vary by outlet, portion size and season. Please confirm the final price with the outlet on WhatsApp before payment.</p>
+  </div>
+</section>
+
+<!-- Videos -->
+<section style="background:var(--cream-soft);" id="videos">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Watch the Legacy</span>
+      <h2>See How It's Made</h2>
+      <p>Two of the dishes Pista House is built on — filmed inside the kitchens that make them.</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/mo613FSQUFM" title="Hyderabadi Biryani at Pista House" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <h3>Zafrani Mutton Biryani — Layer by Layer</h3>
+        <p>A look at how Pista House's signature dum biryani comes together, from the marinade to the final seal.</p>
+      </div>
+      <div class="video-card">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/1MG46GMJHdM" title="Haleem Making Process — Pista House" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <h3>The Haleem Making Process</h3>
+        <p>Hours of slow-pounding and simmering — the process behind Hyderabad's most iconic Ramzan dish.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section>
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">What Guests Say</span>
+      <h2>A Few Words From Our Regulars</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Good ambience, attentive staff, and the biryani never disappoints — it's our go-to for family get-togethers.</p>
+        <div class="who">Frequent Diner · Secunderabad</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">The Haleem during Ramzan is worth the queue, every single year. Nothing else in the city compares.</p>
+        <div class="who">Long-time Customer · Hyderabad</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★☆</div>
+        <p class="quote">Ordered the Zafrani Mutton Biryani and the kebabs for a small event — both were a hit with everyone.</p>
+        <div class="who">Catering Client · Gachibowli</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer / Contact -->
+<footer id="visit">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <span class="pill-logo" style="margin-bottom:16px;"><span class="script">Pista House</span><sup>®</sup></span>
+        <p style="margin-top:16px;">A Hyderabadi legacy since 1997 — world-famous Haleem, traditional dum Biryani, and the flavours of the Old City, served fresh every day.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#story">Our Story</a>
+        <a href="#signature">Signature Dishes</a>
+        <a href="#locations">Locations</a>
+        <a href="#menu">Menu</a>
+      </div>
+      <div class="foot-col">
+        <h4>Order &amp; Visit</h4>
+        <a href="#menu">Order on WhatsApp</a>
+        <a href="https://pistahouse.in" target="_blank" rel="noopener">pistahouse.in</a>
+        <a href="https://www.instagram.com/pistahousehyd" target="_blank" rel="noopener">@pistahousehyd</a>
+      </div>
+      <div class="foot-col">
+        <h4>Head Office Line</h4>
+        <p>099085 86555</p>
+        <p>Rampally X Road, Nagaram, Secunderabad, Telangana 500083</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Pista House. All rights reserved.</span>
+      <span>Design concept for client review — replace placeholder contact numbers before launch.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart FAB + Drawer -->
+<button class="cart-fab" id="cartFab">
+  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+  Your Order <span class="count" id="cartCount">0</span>
+</button>
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-panel">
+    <div class="cart-head">
+      <h3 style="font-size:1.3rem;">Your Order</h3>
+      <button class="cart-close" id="cartCloseBtn"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <p style="font-size:.85rem;color:var(--ink-soft);margin-bottom:16px;">Ordering from: <strong id="cartBranchName">Pista House – Nagaram</strong></p>
+    <div id="cartLines"><p class="cart-empty">Your cart is empty. Add a few favourites from the menu.</p></div>
+    <div class="cart-total" id="cartTotalRow" style="display:none;">
+      <span>Estimated Total</span><span id="cartTotal">₹0</span>
+    </div>
+    <a class="btn btn-emerald wa-send" id="waSendBtn" href="#" target="_blank" rel="noopener" style="display:none;">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 1 1-4.43-7.46L21 3l-1.04 4.43A8.46 8.46 0 0 1 21 11.5Z"/></svg>
+      Send Order on WhatsApp
+    </a>
+  </div>
+</div>
+
+<script>
+/* ===== Data ===== */
+const PRIMARY_WHATSAPP = "919908586555"; // Verified public number — Pista House, Nagaram outlet
+// NOTE FOR CLIENT: replace with your preferred central ordering line, or wire individual
+// branch numbers below into each branch object as "phone" if every outlet takes its own orders.
+
+const branches = [
+  {name:"Nagaram", area:"Secunderabad", original:false,
+   address:"Rampally X Road, Stella Nagaram, Nagaram, Secunderabad, Telangana 500083",
+   hours:"Daily · 11:00 AM – 12:00 AM"},
+  {name:"Shalibanda", area:"Old City, Hyderabad", original:true,
+   address:"20-4-132, Charminar Rd, Shalibanda, Hyderabad, Telangana 500002",
+   hours:"Daily · 11:00 AM – 11:00 PM"},
+  {name:"Uppal", area:"Hyderabad", original:false,
+   address:"Meher Garden Rd, Prashanth Nagar, Uppal, Hyderabad, Telangana 500039",
+   hours:"Daily · 11:00 AM – 11:30 PM"},
+  {name:"King Koti", area:"Hyderabad", original:false,
+   address:"Beside Eden Garden Road, Ramkoti, King Koti, Hyderabad, Telangana 500001",
+   hours:"Daily · 11:00 AM – 11:30 PM"},
+  {name:"Nampally", area:"Hyderabad", original:false,
+   address:"11-2 to 7, Bazarghat Rd, Devi Bagh, Red Hills, Nampally, Hyderabad, Telangana 500004",
+   hours:"Daily · 11:00 AM – 11:00 PM"},
+  {name:"A.S. Rao Nagar", area:"Secunderabad", original:false,
+   address:"Swamik Nagar, A.S. Rao Nagar, Secunderabad, Telangana 500062",
+   hours:"Daily · 11:00 AM – 11:30 PM"},
+  {name:"Chikkadpally", area:"Hyderabad", original:false,
+   address:"1-8-522, Chikkadpalli Rd, Vivek Nagar, Himayatnagar, Hyderabad, Telangana 500020",
+   hours:"Daily · 11:00 AM – 11:00 PM"},
+  {name:"Gachibowli", area:"Hyderabad", original:false,
+   address:"Telecom Nagar Extension, Old Mumbai Hwy, Gachibowli, Hyderabad, Telangana 500032",
+   hours:"Daily · 11:00 AM – 11:30 PM"},
+  {name:"Kondapur", area:"Hyderabad", original:false,
+   address:"Beside Bata Showroom, Ashok Nagar, Kondapur, Telangana 500081",
+   hours:"Daily · 11:00 AM – 11:30 PM"},
+  {name:"Kukatpally", area:"Hyderabad", original:false,
+   address:"Nizampet X Rd, Sardar Patel Nagar, Kukatpally, Hyderabad, Telangana 500085",
+   hours:"Daily · 11:00 AM – 11:30 PM"}
+];
+
+const menu = {
+  "Biryani & Mandi":[
+    {n:"Zafrani Mutton Biryani", d:"Saffron basmati, dum-cooked with tender mutton.", p:320},
+    {n:"Chicken Dum Biryani", d:"Classic layered chicken biryani, sealed &amp; steamed.", p:260},
+    {n:"Al-Faham Chicken Mandi", d:"Arabian-style charcoal chicken over spiced rice.", p:340},
+    {n:"Vegetable Dum Biryani", d:"Mixed vegetables, basmati, traditional dum spices.", p:220}
+  ],
+  "Haleem":[
+    {n:"Mutton Haleem (Half)", d:"Slow-pounded mutton &amp; lentils, ghee &amp; fried onions.", p:180},
+    {n:"Mutton Haleem (Full)", d:"The full portion of our signature Ramzan classic.", p:340},
+    {n:"Chicken Haleem", d:"A lighter take on the city's favourite slow-cook.", p:260}
+  ],
+  "Kebabs & Starters":[
+    {n:"Murgh Mallai Kebab", d:"Creamy malai-marinated chicken, char-grilled.", p:320},
+    {n:"Mutton Seekh Kabab", d:"Minced mutton skewers, grilled over charcoal.", p:360},
+    {n:"Chicken 65 Roll", d:"Spiced chicken 65 rolled in soft paratha.", p:180},
+    {n:"Chicken 555 Starter", d:"House special spiced chicken starter.", p:260}
+  ],
+  "Shawarma & Rolls":[
+    {n:"Chicken Shawarma Roll", d:"Char-grilled chicken, garlic sauce, pickled salad.", p:140},
+    {n:"Mutton Shawarma Plate", d:"Shaved mutton shawarma with rice &amp; salad.", p:220}
+  ],
+  "Bakery & Sweets":[
+    {n:"Osmania Biscuits (250g)", d:"The city's favourite tea-time biscuit.", p:120},
+    {n:"Double Ka Meetha", d:"Bread pudding soaked in sweet milk, served warm.", p:140},
+    {n:"Kunafa Slice", d:"Crisp shredded pastry, cheese &amp; sugar syrup.", p:180},
+    {n:"Kulfi", d:"Traditional malai kulfi on a stick.", p:90}
+  ]
+};
+
+/* ===== State ===== */
+let activeBranchIdx = 0;
+let activeTab = "Biryani & Mandi";
+let cart = {}; // key: item name -> {item, qty}
+
+/* ===== Marquee ===== */
+const offers = [
+  "🎉 Flat 10% OFF on your first WhatsApp order",
+  "🍚 Fresh Dum Biryani, cooked daily",
+  "🥣 World-Famous Haleem — available through the season",
+  "🚚 Free delivery on orders above ₹999 at select outlets",
+  "📞 Skip the queue — order direct on WhatsApp"
+];
+const track = document.getElementById('marqueeTrack');
+const offerHTML = offers.map(o=>`<span>${o}</span>`).join('');
+track.innerHTML = offerHTML + offerHTML;
+
+/* ===== Render branches ===== */
+function mapsUrl(addr){ return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Pista House " + addr); }
+
+function renderBranches(){
+  const grid = document.getElementById('branchGrid');
+  grid.innerHTML = branches.map((b,i)=>`
+    <div class="branch-card ${i===activeBranchIdx?'active':''}">
+      ${b.original?'<span class="badge-orig">The Original 1997 Outlet</span>':''}
+      <h3>Pista House — ${b.name}</h3>
+      <div class="addr">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>${b.address}</span>
+      </div>
+      <div class="hours">${b.hours}</div>
+      <div class="branch-actions">
+        <a class="btn btn-ghost" href="${mapsUrl(b.address)}" target="_blank" rel="noopener">Get Directions</a>
+        <button class="btn btn-emerald" onclick="selectBranch(${i})">Order From Here</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectBranch(i){
+  activeBranchIdx = i;
+  renderBranches();
+  document.getElementById('orderingForName').textContent = "Pista House – " + branches[i].name;
+  document.getElementById('cartBranchName').textContent = "Pista House – " + branches[i].name;
+  document.getElementById('menu').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* ===== Render menu tabs + items ===== */
+function renderTabs(){
+  const bar = document.getElementById('tabBar');
+  bar.innerHTML = Object.keys(menu).map(cat=>`
+    <button class="tab-btn ${cat===activeTab?'active':''}" onclick="setTab('${cat.replace(/'/g, "\\'")}')">${cat}</button>
+  `).join('');
+}
+function setTab(cat){ activeTab = cat; renderTabs(); renderMenuItems(); }
+
+function renderMenuItems(){
+  const grid = document.getElementById('menuGrid');
+  grid.innerHTML = menu[activeTab].map(item=>`
+    <div class="menu-item">
+      <div class="info">
+        <h4>${item.n}</h4>
+        <p>${item.d}</p>
+      </div>
+      <div class="price-row">
+        <span class="price">₹${item.p}</span>
+        <button class="add-btn" onclick="addToCart('${item.n.replace(/'/g, "\\'")}', ${item.p})" aria-label="Add ${item.n} to order">+</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ===== Cart logic ===== */
+function addToCart(name, price){
+  if(!cart[name]) cart[name] = {name, price, qty:0};
+  cart[name].qty += 1;
+  updateCartUI();
+  openCart();
+}
+function changeQty(name, delta){
+  if(!cart[name]) return;
+  cart[name].qty += delta;
+  if(cart[name].qty <= 0) delete cart[name];
+  updateCartUI();
+}
+function updateCartUI(){
+  const lines = Object.values(cart);
+  const count = lines.reduce((s,l)=>s+l.qty,0);
+  document.getElementById('cartCount').textContent = count;
+
+  const linesEl = document.getElementById('cartLines');
+  if(lines.length===0){
+    linesEl.innerHTML = '<p class="cart-empty">Your cart is empty. Add a few favourites from the menu.</p>';
+    document.getElementById('cartTotalRow').style.display='none';
+    document.getElementById('waSendBtn').style.display='none';
+    return;
+  }
+  linesEl.innerHTML = lines.map(l=>`
+    <div class="cart-line">
+      <div><strong style="font-size:.92rem;">${l.name}</strong><div style="font-size:.8rem;color:var(--ink-soft);">₹${l.price} each</div></div>
+      <div class="qty-controls">
+        <button onclick="changeQty('${l.name.replace(/'/g, "\\'")}', -1)">−</button>
+        <span>${l.qty}</span>
+        <button onclick="changeQty('${l.name.replace(/'/g, "\\'")}', 1)">+</button>
+      </div>
+    </div>
+  `).join('');
+
+  const total = lines.reduce((s,l)=>s+l.qty*l.price,0);
+  document.getElementById('cartTotal').textContent = '₹' + total;
+  document.getElementById('cartTotalRow').style.display='flex';
+
+  const branchName = branches[activeBranchIdx].name;
+  let msg = `Hi Pista House ${branchName}! I'd like to order:\n`;
+  lines.forEach(l=>{ msg += `- ${l.name} x${l.qty}\n`; });
+  msg += `\nEstimated total: ₹${total}\nPlease confirm price & delivery time. Thank you!`;
+  const waBtn = document.getElementById('waSendBtn');
+  waBtn.href = `https://wa.me/${PRIMARY_WHATSAPP}?text=${encodeURIComponent(msg)}`;
+  waBtn.style.display='flex';
+}
+
+/* ===== Cart drawer open/close ===== */
+function openCart(){ document.getElementById('cartDrawer').classList.add('open'); }
+function closeCart(){ document.getElementById('cartDrawer').classList.remove('open'); }
+document.getElementById('cartFab').addEventListener('click', openCart);
+document.getElementById('cartCloseBtn').addEventListener('click', closeCart);
+document.getElementById('cartDrawer').addEventListener('click', e=>{ if(e.target.id==='cartDrawer') closeCart(); });
+
+/* ===== Mobile nav ===== */
+document.getElementById('burgerBtn').addEventListener('click', ()=>{
+  document.getElementById('navLinks').classList.toggle('mobile-open');
+});
+document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click', ()=>{
+  document.getElementById('navLinks').classList.remove('mobile-open');
+}));
+
+/* ===== Init ===== */
+renderBranches();
+renderTabs();
+renderMenuItems();
+updateCartUI();
+</script>
+</body>
+</html>
